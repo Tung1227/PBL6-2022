@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img class="rounded" src="public/img/logo.png" width="50" height="50" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PDF sang Word</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        JPG sang PDF
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Giá cả</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trợ giúp</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 ">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="col-xs-1-12 text-center">
+            <h1 class="">Image to Text Converter</h1>
+            <p class="text16">To use prepostseo <strong>Image to Text Converter</strong>, Paste Image Url in the input box given below or upload picture and click on <strong>Submit</strong> Button.</p>
+            <div class="drag-zone hide_after_paste hide_after_paste1" ondragover="_ondragover(event)" ondrop="_ondrop(event)" ondragleave="_ondragleave(event)" ondragenter="_ondragenter(event)" style="background: #F3F9FF; display: block;">
+                <div id="overlay">
+                <div id="text"><i class="fa fa-spin fa-refresh"></i> Uploading Image..</div>
+                </div>
+                <span class="svg_block">
+                <img src="https://www.prepostseo.com/imgs/upload-icon.png" width="148" height="107" alt="uploader">
+                </span>
+                <span class="instUpload my-3">Drag &amp; Drop <span>/</span> <strong title="Paste image">( Ctrl+V )</strong></span>
+                <div class="text-center">
+                <button type="button" class="btn btn-md" id="uploadBtn"> <span data-title="Upload Image"><i class="fa fa-plus"></i> &nbsp;&nbsp;browse files</span></button>
+                </div>
+                <div class="btns-holder justify-content-center row row-wrap">
+                <div class="toolPiker col-sm-2 col-xs-3 text-right ">
+                <buton type="button" class="btn btn-md  " data-title="Image URL" id="togglebylink"><i class="fa fa-link"></i>&nbsp; Enter URL
+                </buton></div>
+                <div class="toolPiker col-sm-2 col-xs-3 text-left">
+                <button type="button" class="btn btn-md gDrive"> <span data-title="Google Drive" id="google" onclick="loadPicker()"> <img src="https://www.prepostseo.com/imgs/google-drive-icon.png?v=1" alt="G Drive" width="19px" height="19px" style="width: 19px;">&nbsp;G Drive</span></button>
+                </div>
+                </div>
+                <div class="toggleLabelName">
+                <span id="fileName" class="" style="clear:both; text-align:center !important; height:20px; margin-top:10px; display:none;" data-toggle="tooltip" data-placement="top" data-original-title="" title=""></span>
+                </div>
+                <div class="inputurlplace hide">
+                <div class="form-group" style="margin-bottom: 5px">
+                <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-link"></i></div>
+                <input form="filesForm" type="url" id="inputURL" name="url" placeholder="Paste Link Here...." class="form-control green-border" style="height:auto; padding:10px;" value="" autocomplete="off">
+                </div>
+                </div>
+                </div>
+                <span class="mn-txt"> Max. 3 images per submission </span>
+                <a target="_blank" href="https://www.prepostseo.com/image-to-text-premium" class="btn btn-check-up p-2 mb-2">Upgrade to 30 images per submission <svg xmlns="http://www.w3.org/2000/svg" width="17.822" height="13.747" viewBox="0 0 17.822 13.747"><path d="M1.088,9.835c-.106-.682-.209-1.341-.31-2C.523,6.178.271,4.521.013,2.865A.611.611,0,0,1,.268,2.2a.6.6,0,0,1,.723.065Q2.6,3.466,4.2,4.67a.832.832,0,0,0,1.35-.228Q6.9,2.419,8.247.4A.748.748,0,0,1,9.409.2a1.4,1.4,0,0,1,.206.261q1.325,1.983,2.647,3.968a.838.838,0,0,0,1.376.229c1.054-.791,2.106-1.585,3.166-2.369a.869.869,0,0,1,.435-.171.574.574,0,0,1,.574.713q-.236,1.522-.47,3.044c-.192,1.247-.389,2.493-.572,3.741-.027.181-.09.225-.267.225q-5.989-.008-11.979,0H1.088Z" transform="translate(0 0)" fill="#fd0"></path><path d="M37.486,224.736c0,.638.022,1.263-.008,1.885a.773.773,0,0,1-.778.707c-.056,0-.111,0-.167,0H22.811a.845.845,0,0,1-.964-.968q0-.789,0-1.578a.184.184,0,0,1,.018-.046Z" transform="translate(-20.763 -213.582)" fill="#fd0"></path></svg></a>
+                </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
