@@ -26,11 +26,17 @@
     font-size: 12px;
     text-transform: uppercase;
 }
-.svg_block{
+
+.svg_block {
     position: absolute;
     top: 0px;
     left: 0px;
     margin: auto;
     right: 0px;
     bottom: 0px;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
 }
