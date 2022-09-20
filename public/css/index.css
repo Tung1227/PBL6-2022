@@ -40,3 +40,28 @@
     outline: none;
     box-shadow: none;
 }
+
+footer {
+    width: 100%;
+    min-height: 100px;
+    float: left;
+    padding: 15px 0 30px;
+    background: #09171a;
+    border-top: 5px solid #0e1313;
+    color: #fff;
+}
+
+.ppsbox-model {
+    background: rgba(0,0,0,.4);
+    display: none;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.noP {
+    padding: 0;
+}
