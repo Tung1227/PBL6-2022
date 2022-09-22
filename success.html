@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="public/css/index.css">
+</head>
+
+<body>
+
+    <div class="main-content sub download-sub">
+        <div class="container content-header">
+            <div class="row mx-0">
+                <div class="col-12 px-0">
+                    <h1>Thành công - chúng tôi đã chuyển đổi tập tin của bạn</h1>
+                    <h2 class="text-left">Quá trình tải xuống của bạn sẽ bắt đầu sau vài giây. Nếu không, vui lòng <a
+                            href="https://dragon.ocr2edit.com/download-file/c2c9cbb1-4849-4df0-9591-92b8ec4f6b06/90087407-2447-4260-9e55-476146417a24">nhấn
+                            vào đây</a>.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page_function_container">
+        <div class="container downloadContainer">
+
+            <div class="downloadListForConvertedFiles">
+                <div class="result-container">
+                    <div class="result-content flex-grow-1">
+                        <div class="alert alert-danger hidden" id="warningConversionError">
+                            <div class="alert-heading">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                <h3>Lỗi chuyển đổi</h3>
+                            </div>
+                            <p class="error-message">Đã xảy ra lỗi trong khi chuyển đổi tệp của bạn. </p>
+                            <p class="support-message">
+                                Xin vui lòng thử lại một lần nữa hoặc gửi email cho chúng tôi đến địa chỉ: <a
+                                    title="Gửi email cho chúng tôi" href="#" class="support-link"
+                                    data-encrypted="nbjmup;ujnf3ifmqApds3feju/dpn">time2help<span>@</span>ocr2edit.com</a>.
+                                Bạn có thể đẩy nhanh quá trình này bằng cách gửi cho chúng tôi con số này: <strong
+                                    id="ticketId"></strong>
+                            </p>
+                        </div>
+                        <div id="error-redo-btn" class="hidden m-b-20">
+                            <a class="btn btn-lg no-margin btn-success text-white" href="#">
+                                <i class="fa fa-redo"></i>
+                                <strong class="text-uppercase">Làm lại</strong>
+                            </a>
+                        </div>
+
+
+
+
+
+
+
+
+                        <div id="errorJobNotFound" class="alert alert-danger hidden" role="alert">
+
+                            <div class="alert-heading">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                <h3>Lỗi</h3>
+                            </div>
+                            <p class="main-message">Xin lỗi, đường dẫn tải xuống mà bạn đang tìm kiếm đã hết hạn hoặc
+                                không hợp lệ.</p>
+                        </div>
+
+                        <div class="alert alert-info hidden" id="infoFileDeleted">
+                            <div class="alert-heading">
+                                <i class="fa fa-info-circle"></i>
+                                <h3>Tập tin đã được xóa thành công</h3>
+                            </div>
+                            <p>Tập tin của bạn đã được xóa thành công khỏi máy chủ của chúng tôi và bây giờ không còn
+                                cách nào để truy cập hoặc tải xuống tập tin đó. </p>
+                            <p>
+                                Nhấp <a title="Quay lại trang chủ" href="https://www.ocr2edit.com/vi">vào đây</a> để
+                                quay trở lại ocr2edit trang chủ. </p>
+                        </div>
+
+                        <div id="qg-toast-result">
+                            <div class="toast toast-compress-size hidden" role="alert" aria-live="assertive"
+                                aria-atomic="true" data-autohide="false" data-animation="false"
+                                id="compress-size-reduced">
+                                <div class="toast-header py-3 w-100">
+                                    <p class="mb-0">
+                                        <i class="fa fa-check-circle pull-left"></i>Chúng tôi đã nén tập tin của bạn với
+                                        <span class="compressed-percent"></span>%
+                                    </p>
+                                </div>
+                                <div class="toast-body p-10 text-left pt-1 pb-3">
+                                    <p class="mb-2 compress-information">
+                                        Bây giờ tập tin là <span class="compressed-original-size"></span> <span
+                                            class="compressed-new-size"></span>
+                                    </p>
+
+                                    <button class="btn btn-large convert-again-btn mx-0"
+                                        title="Chuyển đổi các tập tin gốc của bạn một lần nữa" href="#" rel="nofollow">
+                                        <i class="fa fa-redo"></i> Làm lại
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="toast toast-compress-size-increase hidden" role="alert" aria-live="assertive"
+                                aria-atomic="true" data-autohide="false" data-animation="false"
+                                id="compress-size-increase">
+                                <div class="toast-header py-3 w-100">
+                                    <p class="mb-0">
+                                        <i class="fa fa-times-circle pull-left"></i>Chúng tôi không thể nén tập tin này
+                                        thêm nữa
+                                    </p>
+                                </div>
+                                <div class="toast-body p-10 text-left pt-1 pb-3">
+                                    <p class="mb-2">Bạn có thể thử nén tập tin của mình một lần nữa bằng cách sử dụng
+                                        các cài đặt khác nhau.</p>
+
+                                    <button class="btn btn-large convert-again-btn mx-0"
+                                        title="Chuyển đổi các tập tin gốc của bạn một lần nữa" href="#" rel="nofollow">
+                                        <i class="fa fa-redo"></i> Làm lại
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="result-uibox panel panel-default downloadListContainer m-b-10">
+                            <h3 class="panel-heading no-margin">File đã được chuyển đổi của bạn</h3>
+
+                            <div class="hashResultBox hidden">
+                            </div>
+
+                            <div class="downloadListUiBox">
+                                <div class="download-options row mx-0">
+                                    <div class="files-list col-12 px-0 w-100 download-container-table">
+                                        <input type="hidden" name="job_download_url" value="" id="job_download_url">
+
+                                        <div class="row mx-0 file-row no-bg button-row-top hidden">
+                                            <div
+                                                class="px-0 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 file-name file-options-container-top no-border multi-file">
+                                                <div class="file-select-container-top">
+                                                    <input class="hidden" type="checkbox" aria-label="..." value="1"
+                                                        id="file-select-all-top"
+                                                        title="Chọn hoặc bỏ chọn tất cả các tập tin" checked="">
+                                                    <div class="check-all" id="select-all-checkbox-top" style="">
+                                                        <i
+                                                            class="fa fa-level-up-alt fa-flip-horizontal fa-flip-vertical"></i>
+                                                        Chọn tất cả/không
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12 file-download">
+
+                                                <a data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large convert-again-btn"
+                                                    title="Chuyển đổi các tập tin gốc của bạn một lần nữa" href="#"
+                                                    rel="nofollow" style="">
+                                                    <i class="fa fa-redo"></i> Làm lại
+                                                </a>
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large delete-btn" title="Xóa các tập tin của bạn"
+                                                    href="/api/jobs/3ef6c054-8f0f-4c7c-80f4-a989b5e868e5/delete"
+                                                    rel="nofollow" style="">
+                                                    <i class="fa fa-trash"></i> Xóa
+                                                </button>
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large btn-download"
+                                                    title="Nhấn vào đây để tải tập tin của bạn dưới định dạng ZIP"
+                                                    value="3ef6c054-8f0f-4c7c-80f4-a989b5e868e5"
+                                                    id="downloadZipFile-top">
+                                                    <i class="fa fa-download"></i> Tải xuống tập tin ZIP
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row mx-0 border-bottom-0 file-row">
+                                            <div class="col-xl-9 col-lg-9 col-md-9 col-9 file-name border-bottom-0 ">
+                                                <div class="hidden file-select-container">
+                                                    <span class="file-select">
+                                                        <input type="checkbox" aria-label="..." class="file-checkbox"
+                                                            value="https://www6.ocr2edit.com/v2/dl/web7/download-file/90087407-2447-4260-9e55-476146417a24/example.txt"
+                                                            checked="">
+                                                    </span>
+                                                </div><!-- /input-group -->
+
+                                                <i class="hidden fa fa-info-circle result-file-info"
+                                                    title="Tập tin này không thể nén thêm được nữa"></i>
+                                                <a title="Nhấp chuột vào đây để tải tập tin của bạn ..."
+                                                    href="https://dragon.ocr2edit.com/vi/download-file/c2c9cbb1-4849-4df0-9591-92b8ec4f6b06/90087407-2447-4260-9e55-476146417a24">example.txt</a>
+                                            </div>
+
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-3 file-size border-bottom-0 ">
+                                                <span>1.20 KB</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-0 file-row">
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-12 file-download cloudStorage">
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-default create-qr" title=""
+                                                    data-original-title="Mã QR">
+                                                    <i class="far fa-qrcode"></i>
+                                                </button>
+
+                                                <div class="cloudstorage-parent dropdown">
+                                                    <button class="btn btn-large cloud-storage-toggle" type="button"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        title="Tải file lên lưu trữ đám mây của bạn">
+                                                        <i class="fa fa-cloud-upload-alt"></i> Tải lên đám mây
+                                                    </button>
+
+                                                    <ul
+                                                        class="dropdown-menu dropdown-menu-right cloud-storage-dropdown">
+                                                        <li>
+                                                            <span class="cloud-storage-title">Tải tập tin lên Google
+                                                                Drive:</span>
+                                                        </li>
+
+                                                        <li class="gdrive-saver-container">
+                                                            <div class="btn btn-default gdrive-saver"
+                                                                data-rs-url="https://www6.ocr2edit.com/v2/dl/web7/gdrive-uploader/90087407-2447-4260-9e55-476146417a24/example.txt"
+                                                                data-filename="example.txt">
+                                                                <span class="gdrive-status gdrive-status-default"><i
+                                                                        class="fab fa-google-drive"></i> Google
+                                                                    Drive</span>
+                                                                <span
+                                                                    class="gdrive-status gdrive-status-saving hidden"><i
+                                                                        class="fa fa-spinner fa-spin"></i> Đang
+                                                                    lưu...</span>
+                                                                <span
+                                                                    class="gdrive-status gdrive-status-saved hidden"><i
+                                                                        class="fa fa-check-circle"></i> Đã lưu vào
+                                                                    Google Drive</span>
+                                                                <span
+                                                                    class="gdrive-status gdrive-status-error hidden"><i
+                                                                        class="fa fa-exclamation-triangle"></i> Không
+                                                                    thể lưu file</span>
+                                                            </div>
+                                                        </li>
+
+                                                        <li role="separator" class="divider"></li>
+
+                                                        <li>
+                                                            <span class="cloud-storage-title">Tải tập tin lên
+                                                                Dropbox:</span>
+                                                        </li>
+
+                                                        <li class="dropbox-saver-container">
+                                                            <div class="btn btn-default dropbox-saver"
+                                                                data-url="https://dragon.ocr2edit.com/vi/download-file/c2c9cbb1-4849-4df0-9591-92b8ec4f6b06/90087407-2447-4260-9e55-476146417a24"
+                                                                data-filename="example.txt"><i
+                                                                    class="fab fa-dropbox"></i> Dropbox</div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <a class="btn btn-large btn-download"
+                                                    href="https://dragon.ocr2edit.com/vi/download-file/c2c9cbb1-4849-4df0-9591-92b8ec4f6b06/90087407-2447-4260-9e55-476146417a24"
+                                                    title="Tải về tập tin của bạn"
+                                                    data-identity="e6479735-c10e-4483-ac67-949dceeb9a66"> <i
+                                                        class="fa fa-download"></i> Tải xuống</a>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-0 no-border no-bg button-row">
+                                            <div class="px-0 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 no-border">
+                                                <div class="file-select-container hidden">
+                                                    <input class="hidden" type="checkbox" aria-label="..." value="1"
+                                                        id="file-select-all"
+                                                        title="Chọn hoặc bỏ chọn tất cả các tập tin" checked="">
+                                                    <div class="check-all" id="select-all-checkbox-bottom" style="">
+                                                        <i class="fa fa-level-up-alt fa-flip-horizontal"></i> Chọn tất
+                                                        cả/không
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12 file-button-list">
+                                                <a data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-default single-file-link gm-link" title=""
+                                                    href="https://www.metadata2go.com/?external_url=https://www6.ocr2edit.com/v2/dl/web7/download-file/90087407-2447-4260-9e55-476146417a24/example.txt"
+                                                    target="_blank"
+                                                    data-original-title="Xem lý lịch dữ liệu và cấu trúc tập tin của bạn.">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+
+                                                <a data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-default multi-file-link gm-link hidden"
+                                                    title="Xem lý lịch dữ liệu và cấu trúc tập tin của bạn."
+                                                    href="https://www.metadata2go.com/" target="_blank">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-default create-qr" title="Mã QR">
+                                                    <i class="far fa-qrcode"></i>
+                                                </button>
+
+                                                <a data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large convert-another-file-btn" title=""
+                                                    href="https://www.ocr2edit.com/vi/convert-to-txt" rel="nofollow"
+                                                    data-original-title="Chuyển đổi một file khác sang TXT">
+                                                    <i class="fa fa-file"></i> <span
+                                                        class="convert-another-file-to-text">Chuyển đổi một file khác
+                                                        sang TXT</span>
+                                                </a>
+
+                                                <a data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large convert-again-btn" title="" href="#"
+                                                    rel="nofollow"
+                                                    data-original-title="Chuyển đổi các tập tin gốc của bạn một lần nữa">
+                                                    <i class="fa fa-redo"></i> Làm lại
+                                                </a>
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large delete-btn" title=""
+                                                    href="/api/jobs/3ef6c054-8f0f-4c7c-80f4-a989b5e868e5/delete"
+                                                    rel="nofollow" data-original-title="Xóa các tập tin của bạn">
+                                                    <i class="fa fa-trash"></i> Xóa
+                                                </button>
+                                                <button data-toggle="tooltip" data-placement="bottom"
+                                                    class="btn btn-large btn-download" title=""
+                                                    value="3ef6c054-8f0f-4c7c-80f4-a989b5e868e5" id="downloadZipFile"
+                                                    data-original-title="Nhấn vào đây để tải tập tin của bạn dưới định dạng ZIP">
+                                                    <i class="fa fa-download"></i> Tải xuống tập tin ZIP
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <div class="alert-container ">
+                                            <div class="hidden alert alert-warning result-info"
+                                                id="warningCompressedFileGotLarger">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>Lưu ý: Một số tập tin không thể nén thêm được nữa.</span>
+                                            </div>
+
+
+                                            <div class="hidden alert alert-info result-info"
+                                                id="warningSelectAtLeastOneFile">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>
+                                                    <i class="fa fa-info-circle"></i> <strong>Thông tin:</strong>
+                                                    Bạn phải chọn ít nhất một tập tin.
+                                                </span>
+                                            </div>
+
+                                            <div class="hidden alert alert-info result-info"
+                                                id="warningThisFunctionOnlySupportsOneFile">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>
+                                                    <i class="fa fa-info-circle"></i> <strong>Thông tin:</strong>
+                                                    Chức năng này chỉ hoạt động duy nhất với một tập tin.
+                                                </span>
+                                            </div>
+
+                                            <div class="hidden alert alert-info result-info" id="warningSelectedFiles">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>
+                                                    <i class="fa fa-info-circle"></i> <strong>Thông tin:</strong>
+                                                    Vui lòng chỉ chọn 50 tập tin.
+                                                </span>
+                                            </div>
+
+                                            <div class="hidden alert alert-warning result-warning"
+                                                id="warningGenericError">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>
+                                                    <i class="fa fa-exclamation-circle"></i> <strong>Cảnh báo:</strong>
+                                                    Đã xảy ra lỗi. Xin vui lòng thử lại.
+                                                </span>
+                                            </div>
+
+                                            <div class="hidden alert alert-warning result-warning"
+                                                id="warningNoFilesForZipping">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <span>
+                                                    <i class="fa fa-exclamation-circle"></i> <strong>Cảnh báo:</strong>
+                                                    Bạn phải chọn ít nhất một tập tin để tải xuống dưới định dạng zip.
+                                                </span>
+                                            </div>
+
+                                            <div class="hidden alert alert-warning result-warning"
+                                                id="warningTooManyFilesForZipping">
+                                                <a href="#" data-hide="alert" class="close" aria-label="close">×</a>
+                                                <h4>
+                                                    <i class="fa fa-exclamation-circle"></i> <strong>Cảnh báo:</strong>
+                                                </h4>
+                                                <p>Hiện tại chúng tôi chỉ hỗ trợ nén tối đa 400 file.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="adownloadListContainer downloadAnimation hidden">
+                                <div class="downloadAnimation hidden">
+                                    <div class="downprocess">
+
+                                        <ul class="processing_operation">
+                                            <li>
+                                                <div class="spinner">
+                                                    <div class="rect1"></div>
+                                                    <div class="rect2"></div>
+                                                    <div class="rect3"></div>
+                                                    <div class="rect4"></div>
+                                                    <div class="rect5"></div>
+                                                    <div class="rect6"></div>
+                                                    <div class="rect7"></div>
+                                                    <div class="rect8"></div>
+                                                </div> Đang xử lý
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="further-options-container">
+                                    <p class="p-l-20 p-t-20">
+                                        <strong>Cho đến khi quá trình chuyển đổi kết thúc, bạn có các tùy chọn sau
+                                            đây:</strong>
+                                    </p>
+                                    <ol class="m-b-20">
+                                        <li>
+                                            Xin vui lòng chờ trong chút lát, trang sẽ tự động cập nhật trạng thái chuyển
+                                            đổi.
+                                        </li>
+
+                                        <li id="notifyWhenJobComplete" class="hidden">
+                                            Nhấn vào nút bên dưới để nhận được thông báo khi quá trình chuyển đổi hoàn
+                                            tất.
+                                            <span>Nếu bạn muốn luôn nhận được thông báo khi chuyển đổi hoàn tất, hãy vào
+                                                <a href="https://account.ocr2edit.com/vi/user/notifications"> mục dành
+                                                    cho người dùng. </a></span>
+                                            <ol class="list-unstyled">
+                                                <li>
+                                                    <button class="btn" type="submit" name="email_notify"
+                                                        id="emailNotifyButton"><i class="far fa-envelope mr-1"></i>
+                                                        <span class="notify-me-text">Email</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn" type="submit" name="push_notify"
+                                                        id="pushNotifyButton"><i class="far fa-bell mr-1"></i>
+                                                        <span class="notify-me-text">Thông báo đẩy</span>
+                                                    </button>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info conversion-warning-message hidden" id="conversion-warning-message">
+                            <div class="alert-heading">
+                                <i class="fa fa-info-circle"></i>
+                                <h3 class="mr-1">Thông tin</h3>
+                            </div>
+                            <p class="mr-1">Có vấn đề khi chuyển đổi file của bạn. Có thể không phải tất cả các file đều
+                                được chuyển đổi.</p>
+                            <p>Các file sau không thể được chuyển đổi:</p>
+                            <ol></ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <style>
+            .shadowBox #checkBtn,
+            .shadowBox .btn.tool_btn_submit,
+            .shadowBox .btn.btn-lg.btn-success,
+            .shadowBox .btn.btn-lg.btn-success.active {
+                margin-right: 10px;
+                margin-top: 20px !important;
+                margin-bottom: 20px !important;
+                min-width: 260px !important;
+                padding: 11px 20px !important;
+                font-size: 20px !important;
+                outline: none !important;
+            }
+
+            /* PPs box BEGIN */
+            .ppsbox-model {
+                background: rgba(0, 0, 0, .4);
+                display: none;
+                height: 100%;
+                position: fixed;
+                text-align: center;
+                top: 0;
+                width: 100%;
+                z-index: 10000
+            }
+
+            .ppsbox-model .helper-span {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle
+            }
+
+            .ppsbox-model>div {
+                background-color: #fff;
+                -webkit-box-shadow: 10px 10px 60px #555;
+                box-shadow: 10px 10px 60px #555;
+                display: inline-block;
+                height: 330px;
+                max-height: 100%;
+                max-width: 360px;
+                min-width: 300px;
+                vertical-align: middle;
+                width: 50%;
+                position: relative;
+                border-radius: 20px;
+                padding: 0 15px 50px
+            }
+
+            .ppsbox-model>div:after {
+                width: 100%;
+                content: "";
+                height: 40px;
+                z-index: 26;
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-radius: 0 0 20px 20px
+            }
+
+            .ppsbox-model>div.success:after {
+                background-color: var(--ppsbox-success-color)
+            }
+
+            .ppsbox-model>div.danger:after {
+                background-color: var(--ppsbox-danger-color)
+            }
+
+            .ppsbox-model>div.warning:after {
+                background-color: var(--ppsbox-warning-color)
+            }
+
+            .ppsbox-close {
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                display: inline-block;
+                font-family: arial;
+                font-weight: 700;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                font-size: 25px;
+                line-height: 30px;
+                width: 30px;
+                height: 30px;
+                text-align: center
+            }
+
+            .ppsbox-close.success {
+                background-color: var(--ppsbox-success-color)
+            }
+
+            .ppsbox-close.danger {
+                background-color: var(--ppsbox-danger-color)
+            }
+
+            .ppsbox-close.warning {
+                background-color: var(--ppsbox-warning-color);
+                background-size: contain
+            }
+
+            .ppsbox-trigger {
+                cursor: pointer;
+                font-size: 20px;
+                margin: 20px;
+                display: inline-block;
+                font-weight: 700
+            }
+
+            .ppsbox-img {
+                width: 140px;
+                height: 140px;
+                margin: 0 auto;
+                background-size: contain !important
+            }
+
+            .ppsbox-img.success {
+                background: url(https://www.prepostseo.com/imgs/msg-box-success.png)
+            }
+
+            .ppsbox-img.danger {
+                background: url(https://www.prepostseo.com/imgs/msg-box-danger.png)
+            }
+
+            .ppsbox-img.warning {
+                background: url(https://www.prepostseo.com/imgs/msg-box-warning.png)
+            }
+
+            .ppsbox-heading {
+                font-size: 25px;
+                color: #000000;
+                text-transform: capitalize
+            }
+
+            .ppsbox-msg {
+                font-size: 15px;
+                color: #000000BF
+            }
+
+            .help-us {
+                bottom: 5px;
+                position: absolute;
+                z-index: 28;
+                color: #fff;
+                left: 50%;
+                -webkit-transform: translate(-50%, -5px);
+                -ms-transform: translate(-50%, -5px);
+                transform: translate(-50%, -5px);
+                width: 100%;
+                font-size: 15px
+            }
+
+            .help-us a {
+                font-weight: 700;
+                color: #fff
+            }
+
+            /* PPs box END */
+            .buyBtn,
+            .rgsBtn {
+                background: #ccc;
+                border-radius: 32px !important;
+                opacity: 1;
+                width: 120px !important;
+                height: 40px;
+                line-height: 2;
+                text-align: center;
+                border: 1px solid #888;
+                color: #838383;
+                margin: 10px auto
+            }
+
+            .rgsBtn:active,
+            .rgsBtn:focus,
+            .buyBtn:active,
+            .buyBtn:focus {
+                outline: none !important;
+                box-shadow: none !important;
+                color: #fff
+            }
+
+            .os-icon {
+                padding: 3px 8px;
+                text-indent: 0 !important;
+                margin: 0
+            }
+
+            .os-icon:hover>img {
+                background: #3acd99
+            }
+
+            #improveTool {
+                background: #277c55 !important
+            }
+        </style>
+        <div class="ppsbox-model text-center" style="display: none;">
+            <span class="helper-span"></span>
+            <div id="ppsbox">
+                <div class="ppsbox-img success"></div>
+                <div class="ppsbox-close success">×</div>
+                <span class="ppsbox-heading">Success</span>
+                <div class="ppsbox-msg">lorem ipsum dolor sit amet, consect</div>
+                <div class="help-us">If you need any help, please <a href="https://www.prepostseo.com/contact"
+                        target="_blank"><u>Contact us</u></a></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-sm-12 d-flex" style="padding:10px 0px;">
+                <div class="col-sm-4 noP" style="padding-right:20px;">
+                    <img src="https://www.prepostseo.com/imgs/prepostseo-logo-white.webp" width="107" height="30"
+                        alt="prepostseo">
+                    <hr>
+                    <p>By Developing 75+ online tools for students, writers and SEO experts, PREPOSTSEO is one of the
+                        top free tools websites.</p>
+                    <p>2022 © PrePost SEO</p>
+                    <img src="https://www.prepostseo.com/imgs/ssl-badge-120x37.png" width="120" height="37"
+                        alt="Prepostseo SSL">
+                </div>
+                <div class="col-sm-5 noP" style="padding-right:20px;">
+                    <p class="fh">Prepostseo Services</p>
+                    <hr style=" margin:10px 0;">
+                    <a style="color:#3ACD99;" href="/blog/"><strong>PREPOSTSEO BLOG</strong></a>
+                    <a href="/plagiarism-checker-api">Plagiarism APIs</a>
+                    <a href="https://wordpress.org/plugins/prepost-seo/" target="_blank"
+                        rel="nofollow noreferrer">Wordpress Plugin</a>
+                    <a href="/seo-tools-widgets">SEO Tools Widgets</a>
+                    <a href="https://www.prepostseo.com/tool/">More Tools</a>
+                    <hr style=" margin:10px 0;">
+                    <a href="https://www.facebook.com/prepostseo/" rel="noopener" aria-label="facebook" target="_blank"
+                        class="fbtn"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/prepostseo" rel="noopener" aria-label="twitter" target="_blank"
+                        class="fbtn"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/prepostseo/" rel="noopener" aria-label="linkedin"
+                        target="_blank" class="fbtn"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://play.google.com/store/search?q=prepostseo&amp;c=apps" rel="noopener"
+                        aria-label="android" target="_blank" class="fbtn"><i class="fa fa-android"></i></a>
+                    <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                        aria-label="apple" target="_blank" class="fbtn"><i class="fa fa-apple"></i></a>
+                    <a href="https://apps.microsoft.com/store/detail/plagiarism-checker/9PM6Q4KGJM8P?hl=en-pk&amp;gl=PK"
+                        rel="noopener" aria-label="window" target="_blank" class="fbtn"><i class="fa fa-windows"
+                            aria-hidden="true"></i></a>
+                    <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                        aria-label="apple" target="_blank" class="fbtn os-icon">
+                        <img src="https://www.prepostseo.com/imgs/app-store-ios-brands.svg" width="15" height="17"
+                            alt="google play store">
+                    </a>
+                </div>
+                <div class="col-sm-3 noP" style="padding-right:20px; padding-bottom:80px">
+                    <p class="fh">Resources</p>
+                    <hr style=" margin:10px 0;">
+                    <a href="/about">About Us</a>
+                    <a href="/contact">Contact Us</a>
+                    <a href="/advertise">Advertise</a>
+                    <a href="/affiliate">Affiliate</a>
+                    <a href="/faqs">FAQs</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/refund-policy">Refund Policy</a>
+                    <a href="/terms-of-use">Terms of use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
