@@ -14,9 +14,9 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "name")
+    @Column
     private String imageFile;
-    @Column(name = "status")
+    @Column
     private String status;
 
     @ManyToOne
