@@ -9,14 +9,16 @@ import java.util.List;
 
 @Entity
 @Data
-@IdClass(User.class)
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column
     private String userName;
+    @Column
     private String password;
+    @Column
     private boolean verified;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
