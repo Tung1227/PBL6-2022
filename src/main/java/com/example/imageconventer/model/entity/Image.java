@@ -10,15 +10,16 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "images")
-public class Image implements Serializable {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name = "name")
     private String imageFile;
+    @Column(name = "status")
     private String status;
 
     @ManyToOne
-    @JsonIgnore
-    @JoinColumn( name = "id",referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn( name = "id",insertable = false,updatable = false)
     private User user;
 }
