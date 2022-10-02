@@ -3,26 +3,27 @@ spring:
     prefix: file:src/main/resources/templates/
     cache: false
 
-  jpa:
-    database: POSTGRESQL
-    hibernate:
-      ddl-auto: update
-      naming:
+#  jpa:
+#    database: POSTGRESQL
+#    hibernate:
+#      ddl-auto: update
+#      naming:
 #        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        #dong config nay giup tuy y tao ten bang minh thich
-
-    show-sql: true
-
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/imageToText
-    username: postgres
-    password: 1
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      max-lifetime: 600000
-      maximum-pool-size: 2
-
-
-server:
-  port: 8080
+#        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#        #dong config nay giup tuy y tao ten bang minh thichs
+#
+#    show-sql: false
+#
+#
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/convertDB
+#    username: tungluong
+#    password: tungluong
+#    driver-class-name: org.postgresql.Driver
+#    hikari:
+#      max-lifetime: 600000
+#      maximum-pool-size: 2
+#
+#
+#server:
+#  port: 8080

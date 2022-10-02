@@ -1,4 +1,7 @@
 package com.example.imageconventer.service;
 
-public class LoginService {
+import com.example.imageconventer.model.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LoginService extends JpaRepository<User, Integer> {
 }

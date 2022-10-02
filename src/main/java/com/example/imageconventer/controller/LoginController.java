@@ -1,4 +1,4 @@
-package com.example.imageconventer.controller;
+package com.example.imageconventer.Controller;
 
 import com.example.imageconventer.model.dto.Login;
 import lombok.RequiredArgsConstructor;
@@ -15,5 +15,3 @@ public class LoginController {
         log.info("login page");
         return "login";
 
-    }
-}
