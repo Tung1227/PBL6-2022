@@ -1,10 +1,218 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/converpage.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/successpage.css}">
+</head>
+
+<body>
+<!-- menu  -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img class="rounded" src="assets/img/logo.png" width="50" height="50" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PDF sang Word</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    JPG sang PDF
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Giá cả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Trợ giúp</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Login</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Sing Up</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div id="page_function_container" class="mb-4">
+    <div class="h-100 container downloadContainer">
+        <div class="h-100 downloadListForConvertedFiles">
+            <div class="h-100 result-container">
+                <div class="h-100 result-content flex-grow-1">
+                    <div class="h-100 mt-4 alert alert-danger hidden" id="warningConversionError">
+                        <textarea class="h-50 w-100 rounded file-drop-area" name="" id=""></textarea>
+                        <div class="panel panel-primary" id="result_panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center">Result List</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                    <li class="list-group-item"><strong>Signature
+                                        Accommodations</strong>(1480m)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-4 justify-content-center">
+                            <a name="" id="" class="btn btn-lg bg-success text-white" href="#"
+                               role="button">Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <style>
+
+    </style>
+    <div class="ppsbox-model text-center" style="display: none;">
+        <span class="helper-span"></span>
+        <div id="ppsbox">
+            <div class="ppsbox-img success"></div>
+            <div class="ppsbox-close success">×</div>
+            <span class="ppsbox-heading">Success</span>
+            <div class="ppsbox-msg">lorem ipsum dolor sit amet, consect</div>
+            <div class="help-us">If you need any help, please <a href="https://www.prepostseo.com/contact"
+                                                                 target="_blank"><u>Contact us</u></a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-12 d-flex" style="padding:10px 0px;">
+            <div class="col-sm-4 noP" style="padding-right:20px;">
+                <img src="https://www.prepostseo.com/imgs/prepostseo-logo-white.webp" width="107" height="30"
+                     alt="prepostseo">
+                <hr>
+                <p>By Developing 75+ online tools for students, writers and SEO experts, PREPOSTSEO is one of
+                    the
+                    top free tools websites.</p>
+                <p>2022 © PrePost SEO</p>
+                <img src="https://www.prepostseo.com/imgs/ssl-badge-120x37.png" width="120" height="37"
+                     alt="Prepostseo SSL">
+            </div>
+            <div class="col-sm-5 noP" style="padding-right:20px;">
+                <p class="fh">Prepostseo Services</p>
+                <hr style=" margin:10px 0;">
+                <a style="color:#3ACD99;" href="/blog/"><strong>PREPOSTSEO BLOG</strong></a>
+                <a href="/plagiarism-checker-api">Plagiarism APIs</a>
+                <a href="https://wordpress.org/plugins/prepost-seo/" target="_blank"
+                   rel="nofollow noreferrer">Wordpress Plugin</a>
+                <a href="/seo-tools-widgets">SEO Tools Widgets</a>
+                <a href="https://www.prepostseo.com/tool/">More Tools</a>
+                <hr style=" margin:10px 0;">
+                <a href="https://www.facebook.com/prepostseo/" rel="noopener" aria-label="facebook" target="_blank"
+                   class="fbtn"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/prepostseo" rel="noopener" aria-label="twitter" target="_blank"
+                   class="fbtn"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/prepostseo/" rel="noopener" aria-label="linkedin"
+                   target="_blank" class="fbtn"><i class="fa fa-linkedin"></i></a>
+                <a href="https://play.google.com/store/search?q=prepostseo&amp;c=apps" rel="noopener"
+                   aria-label="android" target="_blank" class="fbtn"><i class="fa fa-android"></i></a>
+                <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                   aria-label="apple" target="_blank" class="fbtn"><i class="fa fa-apple"></i></a>
+                <a href="https://apps.microsoft.com/store/detail/plagiarism-checker/9PM6Q4KGJM8P?hl=en-pk&amp;gl=PK"
+                   rel="noopener" aria-label="window" target="_blank" class="fbtn"><i class="fa fa-windows"
+                                                                                      aria-hidden="true"></i></a>
+                <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                   aria-label="apple" target="_blank" class="fbtn os-icon">
+                    <img src="https://www.prepostseo.com/imgs/app-store-ios-brands.svg" width="15" height="17"
+                         alt="google play store">
+                </a>
+            </div>
+            <div class="col-sm-3 noP" style="padding-right:20px; padding-bottom:80px">
+                <p class="fh">Resources</p>
+                <hr style=" margin:10px 0;">
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/advertise">Advertise</a>
+                <a href="/affiliate">Affiliate</a>
+                <a href="/faqs">FAQs</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/refund-policy">Refund Policy</a>
+                <a href="/terms-of-use">Terms of use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
