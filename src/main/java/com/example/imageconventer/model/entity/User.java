@@ -20,6 +20,10 @@ public class User {
     private String password;
     @Column
     private boolean verified;
+    @Column
+    private String cookie;
+    @Column
+    private String token;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Image> images;

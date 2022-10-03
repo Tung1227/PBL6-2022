@@ -1,6 +1,5 @@
-package com.example.imageconventer.Controller;
+package com.example.imageconventer.controller;
 
-import com.example.imageconventer.model.dto.Login;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -14,4 +13,5 @@ public class LoginController {
     public String loginPage() {
         log.info("login page");
         return "login";
-
+    }
+}
