@@ -10,4 +10,9 @@ public class upLoadController {
      public String upload(Model model){
         return "converpage";
     }
+
+    @RequestMapping("/")
+    public String home(Model model){
+        return "redirect:upload";
+    }
 }
