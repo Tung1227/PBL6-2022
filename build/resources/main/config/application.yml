@@ -1,0 +1,29 @@
+spring:
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
+
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        #dong config nay giup tuy y tao ten bang minh thichs
+
+    show-sql: false
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: tungluong
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      max-lifetime: 600000
+      maximum-pool-size: 2
+
+
+server:
+  port: 8080
