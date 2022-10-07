@@ -22,6 +22,9 @@ public class Image {
     private String status;
 
     @ManyToOne
-    @JoinColumn( name = "id",insertable = false,updatable = false)
+    @JoinColumns({
+            @JoinColumn( name = "id",insertable = false,updatable = false),
+            @JoinColumn( name = "username",insertable = false,updatable = false)
+    })
     private User user;
 }

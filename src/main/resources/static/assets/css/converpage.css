@@ -1,0 +1,267 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.file-drop-area {
+    border: dashed green;
+    height: 400px;
+    position: relative;
+}
+
+.file-input {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.choose-file-button {
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.svg_block {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+    right: 0px;
+    bottom: 0px;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+footer {
+    width: 100%;
+    min-height: 100px;
+    float: left;
+    padding: 15px 0 30px;
+    background: #09171a;
+    border-top: 5px solid #0e1313;
+    color: #fff;
+}
+
+.ppsbox-model {
+    background: rgba(0, 0, 0, .4);
+    display: none;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.noP {
+    padding: 0;
+}
+
+.bg-menu {
+    background-color: #09171a;
+}
+
+/* footer */
+.shadowBox #checkBtn,
+.shadowBox .btn.tool_btn_submit,
+.shadowBox .btn.btn-lg.btn-success,
+.shadowBox .btn.btn-lg.btn-success.active {
+    margin-right: 10px;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    min-width: 260px !important;
+    padding: 11px 20px !important;
+    font-size: 20px !important;
+    outline: none !important;
+}
+
+/* PPs box BEGIN */
+.ppsbox-model {
+    background: rgba(0, 0, 0, .4);
+    display: none;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 10000
+}
+
+.ppsbox-model .helper-span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+
+.ppsbox-model > div {
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 60px #555;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: 330px;
+    max-height: 100%;
+    max-width: 360px;
+    min-width: 300px;
+    vertical-align: middle;
+    width: 50%;
+    position: relative;
+    border-radius: 20px;
+    padding: 0 15px 50px
+}
+
+.ppsbox-model > div:after {
+    width: 100%;
+    content: "";
+    height: 40px;
+    z-index: 26;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 20px 20px
+}
+
+.ppsbox-model > div.success:after {
+    background-color: var(--ppsbox-success-color)
+}
+
+.ppsbox-model > div.danger:after {
+    background-color: var(--ppsbox-danger-color)
+}
+
+.ppsbox-model > div.warning:after {
+    background-color: var(--ppsbox-warning-color)
+}
+
+.ppsbox-close {
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: 700;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center
+}
+
+.ppsbox-close.success {
+    background-color: var(--ppsbox-success-color)
+}
+
+.ppsbox-close.danger {
+    background-color: var(--ppsbox-danger-color)
+}
+
+.ppsbox-close.warning {
+    background-color: var(--ppsbox-warning-color);
+    background-size: contain
+}
+
+.ppsbox-trigger {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: 700
+}
+
+.ppsbox-img {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+    background-size: contain !important
+}
+
+.ppsbox-img.success {
+    background: url(https://www.prepostseo.com/imgs/msg-box-success.png)
+}
+
+.ppsbox-img.danger {
+    background: url(https://www.prepostseo.com/imgs/msg-box-danger.png)
+}
+
+.ppsbox-img.warning {
+    background: url(https://www.prepostseo.com/imgs/msg-box-warning.png)
+}
+
+.ppsbox-heading {
+    font-size: 25px;
+    color: #000000;
+    text-transform: capitalize
+}
+
+.ppsbox-msg {
+    font-size: 15px;
+    color: #000000BF
+}
+
+.help-us {
+    bottom: 5px;
+    position: absolute;
+    z-index: 28;
+    color: #fff;
+    left: 50%;
+    -webkit-transform: translate(-50%, -5px);
+    -ms-transform: translate(-50%, -5px);
+    transform: translate(-50%, -5px);
+    width: 100%;
+    font-size: 15px
+}
+
+.help-us a {
+    font-weight: 700;
+    color: #fff
+}
+
+/* PPs box END */
+.buyBtn,
+.rgsBtn {
+    background: #ccc;
+    border-radius: 32px !important;
+    opacity: 1;
+    width: 120px !important;
+    height: 40px;
+    line-height: 2;
+    text-align: center;
+    border: 1px solid #888;
+    color: #838383;
+    margin: 10px auto
+}
+
+.rgsBtn:active,
+.rgsBtn:focus,
+.buyBtn:active,
+.buyBtn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    color: #fff
+}
+
+.os-icon {
+    padding: 3px 8px;
+    text-indent: 0 !important;
+    margin: 0
+}
+
+.os-icon:hover > img {
+    background: #3acd99
+}
+
+#improveTool {
+    background: #277c55 !important
+}

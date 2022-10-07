@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface LoginService extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u where u.userName = ?1")
-    User findUserByUserName(String username);
-}
+    User findUserByUserName(String username);}
+
 

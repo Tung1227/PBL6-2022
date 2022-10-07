@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class upLoadController {
+public class UpLoadController {
 
     @ResponseBody
     @PostMapping("/upload")
@@ -16,8 +16,14 @@ public class upLoadController {
         return "Ok";
     }
 
+
     @GetMapping("/upload")
-    public String home(Model model) {
+     public String upload(Model model){
         return "converpage";
+    }
+
+    @RequestMapping("/")
+    public String home(Model model){
+        return "redirect:upload";
     }
 }
