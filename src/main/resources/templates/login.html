@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Title</title>
+    <title>Login</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +10,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/login.css}">
+    <!--    JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<!--    JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded',function (){
+            $('.error').each(function() {
+                if($(this).text() == ''){
+                    $(this).hide()
+                }
+            })
+        })
+
+        function  checkInput(){
+            console.log($('#password').val().length)
+            if($('#password').val().length < 8){
+                $('.error').show().text('Mật khẩu không đúng format')
+            }else {
+                $('.error').text('')
+                $('.error').hide()
+            }
+        }
+
+    </script>
 </head>
 <body>
 <div class="wrapper fadeInDown">
@@ -18,13 +42,14 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon"/>
+            <img src="assets/img/logo.png" id="icon" alt="User Icon"/>
         </div>
 
+        <span class="error" th:utext="${errorMsg}"></span>
         <!-- Login Form -->
-        <form action="signup" method="post">
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form action="login" method="post">
+            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" onblur="checkInput()">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 

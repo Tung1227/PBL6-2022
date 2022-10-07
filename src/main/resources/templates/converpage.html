@@ -1,1 +1,336 @@
-aloalo
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Upload</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/converpage.css}">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-menu">
+    <a class="navbar-brand" href="#">
+        <img class="rounded" src="assets/img/logo.png" width="50" height="50" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PDF sang Word</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    JPG sang PDF
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Giá cả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Trợ giúp</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Login</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Sing Up</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container mb-4">
+    <div class="row mt-100">
+        <div class="col-md-12 text-center">
+            <h1 class="">Image to Text Converter</h1>
+            <p>To use prepostseo <strong>Image to Text Converter</strong>, Paste Image Url in the
+                input
+                box given below or upload picture and click on <strong>Submit</strong> Button.</p>
+            <div class="rounded file-drop-area">
+                <div class="pt-5 svg_block">
+                        <span class="svg_block">
+                            <i class="fa fa-cloud-upload fa-5x" aria-hidden="true"></i>
+                        </span>
+                    <div class="row">
+                            <span class="w-100 file-message text-secondary display-3 mt-3">
+                                Drag & drop files here
+                            </span>
+                    </div>
+                    <button type="button" class="btn btn-primary pl-4 pr-4 mt-3">
+                        <i class="fa fa-search"></i>
+                        Chọn File
+                    </button>
+                    <div class="row mt-3 d-flex justify-content-center">
+                        <input id="nameFile" class="border-0 text-center" type="text" name="" value="">
+                    </div>
+                </div>
+                <input class="file-input" type="file" multiple="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 text-center">
+        <div id="error-redo-btn" class="w-100 m-b-20">
+            <a class="btn btn-lg no-margin btn-success text-white" href="#">
+                <i class="fa fa-redo"></i>
+                <strong class="text-uppercase">Submit</strong>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-6 mt-2 pl-0">
+            <div class="col-md-12 pr-0 h-100">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <i class="fa fa-info-circle"></i>
+                        Làm cách nào để chuyển đổi hình ảnh thành văn bản?
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Các bước thực hiện
+                        </h5>
+                        <ol>
+                            <li>Tải lên file hình ảnh ở bất cứ định dạng nào PNG, JPG, GIF hoặc các định dạng khác.
+                            </li>
+                            <li>Chọn ngôn ngữ của văn bản trong file hình ảnh của bạn. (tùy chọn)</li>
+                            <li>Sau khi nhấn vào "Bắt đầu", bạn có thể tải xuống văn bản đã trích xuất của mình.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-2 pr-0">
+            <div class="col-md-12 pl-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Mục lục
+                        </h5>
+                        <ul class="toc_list">
+                            <li class="d-block pb-1"><a href="#image-to-text-converter">Image to Text Converter</a>
+                            </li>
+                            <li class="d-block pb-1"><a href="#how-to-extract-text-from-images">How to extract text
+                                from images?</a></li>
+                            <li class="d-block pb-1"><a href="#features-offered-by-image-to-text">Features offered
+                                by Image to Text</a></li>
+                            <li class="d-block pb-1"><a href="#why-prepostseo-image-to-text-converter">Why
+                                Prepostseo Image to Text Converter?</a></li>
+                            <li class="d-block pb-1"><a href="#use-image-to-text-converter-why-it-is-important">Use
+                                Image to Text converter – Why it is important?</a></li>
+                            <li class="d-block pb-1"><a href="#how-do-i-extract-text-from-jpeg">How do I extract
+                                text from JPEG?</a></li>
+                            <li class="d-block pb-1"><a href="#how-do-i-convert-handwritten-notes-to-text">How do I
+                                convert handwritten notes to text?</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2 id="image-to-text-converter"><strong>Image to Text Converter</strong></h2>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, praesentium voluptatum deleniti
+        voluptatem maxime suscipit, eligendi architecto asperiores incidunt commodi quidem accusamus vitae
+        sapiente
+        voluptas? Dolore modi magni fugiat placeat consequatur accusamus neque esse consequuntur labore sunt, et
+        laboriosam odio ipsam, reprehenderit reiciendis recusandae qui molestias ratione, non quaerat iusto! Eos
+        placeat atque facere eaque, ea optio beatae praesentium animi numquam ipsa voluptas, sint quos eum
+        asperiores perferendis, deleniti quam magni voluptatem quia nobis! Necessitatibus nam dolor ut officia
+        quos
+        aspernatur consequuntur ipsum odit? Minus, culpa porro deserunt commodi itaque impedit consequuntur
+        placeat
+        corporis voluptas cum. Natus suscipit ut quos?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fugiat atque assumenda dignissimos, eum
+        harum nihil accusantium sit debitis inventore aperiam deserunt eius maiores earum eaque excepturi ipsum
+        provident nemo odit expedita perspiciatis reprehenderit eos? Molestiae accusantium magnam placeat at quae
+    </div>
+    <div>
+        <h2 id="how-to-extract-text-from-images"><strong>How to extract text from images?</strong></h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere, consequatur earum facilis amet
+        voluptatem blanditiis? Itaque necessitatibus ipsa mollitia laborum iure quod veniam non earum corrupti
+        illum, sit sequi eaque nisi quidem maxime atque est error placeat, delectus ipsum qui libero ducimus! Porro
+        hic perferendis laudantium doloribus quo corrupti totam, impedit in modi dolore, eos eum corporis, fuga
+        similique itaque eius at minus expedita labore veritatis earum ad! Sapiente nemo illum consequuntur
+        perspiciatis facere at libero et ducimus accusamus suscipit amet quos incidunt soluta sed, animi fugiat?
+        Minima provident libero fuga dicta recusandae blanditiis voluptate aspernatur voluptas vitae perspiciatis!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus excepturi aut quaerat illo adipisci?
+        Ducimus praesentium quos libero commodi illo quis reprehenderit! Nostrum natus assumenda laborum. Officia
+        beatae blanditiis deleniti asperiores dignissimos laborum, dolorem dolor eligendi ut earum eos consequatur
+        eum cumque corporis quae similique itaque labore? Atque nisi rerum asperiores laborum assumenda, tempore,
+        saepe consequuntur vitae architecto nulla doloremque mollitia repellat nesciunt voluptates illum aut porro
+    </div>
+    <div>
+        <h2 id="features-offered-by-image-to-text"><strong>Features offered by Image to Text</strong></h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam animi omnis eos veritatis ut
+        officiis. Culpa corporis neque debitis numquam odit quod maxime minima quidem repellat. Cupiditate iste,
+        nobis quidem mollitia illum harum exercitationem, voluptatem saepe odio sed deleniti! Dolor eius sit
+        adipisci veritatis animi doloribus illum amet ducimus voluptatibus sequi. Consectetur magni, rerum natus
+        ipsam nobis incidunt fuga alias pariatur repellendus ad atque esse, non eveniet consequatur earum.
+        Temporibus reprehenderit consequuntur assumenda debitis omnis, quas nemo dicta ab distinctio. Pariatur
+        adipisci expedita, ducimus vel maiores excepturi soluta voluptatem quibusdam quos, minus distinctio dolor
+        facere rem quasi dolore voluptatibus?
+    </div>
+    <div>
+        <h2 id="why-prepostseo-image-to-text-converter"><strong>Why Prepostseo Image to Text Converter?</strong>
+        </h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam animi omnis eos veritatis ut
+        officiis. Culpa corporis neque debitis numquam odit quod maxime minima quidem repellat. Cupiditate iste,
+        nobis quidem mollitia illum harum exercitationem, voluptatem saepe odio sed deleniti! Dolor eius sit
+        adipisci veritatis animi doloribus illum amet ducimus voluptatibus sequi. Consectetur magni, rerum natus
+        ipsam nobis incidunt fuga alias pariatur repellendus ad atque esse, non eveniet consequatur earum.
+        Temporibus reprehenderit consequuntur assumenda debitis omnis, quas nemo dicta ab distinctio. Pariatur
+        adipisci expedita, ducimus vel maiores excepturi soluta voluptatem quibusdam quos, minus distinctio dolor
+        facere rem quasi dolore voluptatibus?
+    </div>
+    <div>
+        <h2 id="use-image-to-text-converter-why-it-is-important"><strong>Use Image to Text converter – Why it is
+            important?</strong></h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam animi omnis eos veritatis ut
+        officiis. Culpa corporis neque debitis numquam odit quod maxime minima quidem repellat. Cupiditate iste,
+        nobis quidem mollitia illum harum exercitationem, voluptatem saepe odio sed deleniti! Dolor eius sit
+        adipisci veritatis animi doloribus illum amet ducimus voluptatibus sequi. Consectetur magni, rerum natus
+        ipsam nobis incidunt fuga alias pariatur repellendus ad atque esse, non eveniet consequatur earum.
+        Temporibus reprehenderit consequuntur assumenda debitis omnis, quas nemo dicta ab distinctio. Pariatur
+        adipisci expedita, ducimus vel maiores excepturi soluta voluptatem quibusdam quos, minus distinctio dolor
+        facere rem quasi dolore voluptatibus?
+    </div>
+    <div>
+        <h2 id="how-do-i-extract-text-from-jpeg"><strong>How do I extract text from JPEG?</strong></h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam animi omnis eos veritatis ut
+        officiis. Culpa corporis neque debitis numquam odit quod maxime minima quidem repellat. Cupiditate iste,
+        nobis quidem mollitia illum harum exercitationem, voluptatem saepe odio sed deleniti! Dolor eius sit
+        adipisci veritatis animi doloribus illum amet ducimus voluptatibus sequi. Consectetur magni, rerum natus
+        ipsam nobis incidunt fuga alias pariatur repellendus ad atque esse, non eveniet consequatur earum.
+        Temporibus reprehenderit consequuntur assumenda debitis omnis, quas nemo dicta ab distinctio. Pariatur
+        adipisci expedita, ducimus vel maiores excepturi soluta voluptatem quibusdam quos, minus distinctio dolor
+        facere rem quasi dolore voluptatibus?
+    </div>
+    <div>
+        <h2 id="how-do-i-convert-handwritten-notes-to-text"><strong>How do I convert handwritten notes to
+            text?</strong></h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae magnam animi omnis eos veritatis ut
+        officiis. Culpa corporis neque debitis numquam odit quod maxime minima quidem repellat. Cupiditate iste,
+        nobis quidem mollitia illum harum exercitationem, voluptatem saepe odio sed deleniti! Dolor eius sit
+        adipisci veritatis animi doloribus illum amet ducimus voluptatibus sequi. Consectetur magni, rerum natus
+        ipsam nobis incidunt fuga alias pariatur repellendus ad atque esse, non eveniet consequatur earum.
+        Temporibus reprehenderit consequuntur assumenda debitis omnis, quas nemo dicta ab distinctio. Pariatur
+        adipisci expedita, ducimus vel maiores excepturi soluta voluptatem quibusdam quos, minus distinctio dolor
+        facere rem quasi dolore voluptatibus?
+    </div>
+</div>
+
+<footer>
+    <style>
+
+    </style>
+    <div class="ppsbox-model text-center" style="display: none;">
+        <span class="helper-span"></span>
+        <div id="ppsbox">
+            <div class="ppsbox-img success"></div>
+            <div class="ppsbox-close success">×</div>
+            <span class="ppsbox-heading">Success</span>
+            <div class="ppsbox-msg">lorem ipsum dolor sit amet, consect</div>
+            <div class="help-us">If you need any help, please <a href="https://www.prepostseo.com/contact"
+                                                                 target="_blank"><u>Contact us</u></a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-12 d-flex" style="padding:10px 0px;">
+            <div class="col-sm-4 noP" style="padding-right:20px;">
+                <img src="https://www.prepostseo.com/imgs/prepostseo-logo-white.webp" width="107" height="30"
+                     alt="prepostseo">
+                <hr>
+                <p>By Developing 75+ online tools for students, writers and SEO experts, PREPOSTSEO is one of the
+                    top free tools websites.</p>
+                <p>2022 © PrePost SEO</p>
+                <img src="https://www.prepostseo.com/imgs/ssl-badge-120x37.png" width="120" height="37"
+                     alt="Prepostseo SSL">
+            </div>
+            <div class="col-sm-5 noP" style="padding-right:20px;">
+                <p class="fh">Prepostseo Services</p>
+                <hr style=" margin:10px 0;">
+                <a style="color:#3ACD99;" href="/blog/"><strong>PREPOSTSEO BLOG</strong></a>
+                <a href="/plagiarism-checker-api">Plagiarism APIs</a>
+                <a href="https://wordpress.org/plugins/prepost-seo/" target="_blank"
+                   rel="nofollow noreferrer">Wordpress Plugin</a>
+                <a href="/seo-tools-widgets">SEO Tools Widgets</a>
+                <a href="https://www.prepostseo.com/tool/">More Tools</a>
+                <hr style=" margin:10px 0;">
+                <a href="https://www.facebook.com/prepostseo/" rel="noopener" aria-label="facebook" target="_blank"
+                   class="fbtn"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/prepostseo" rel="noopener" aria-label="twitter" target="_blank"
+                   class="fbtn"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/prepostseo/" rel="noopener" aria-label="linkedin"
+                   target="_blank" class="fbtn"><i class="fa fa-linkedin"></i></a>
+                <a href="https://play.google.com/store/search?q=prepostseo&amp;c=apps" rel="noopener"
+                   aria-label="android" target="_blank" class="fbtn"><i class="fa fa-android"></i></a>
+                <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                   aria-label="apple" target="_blank" class="fbtn"><i class="fa fa-apple"></i></a>
+                <a href="https://apps.microsoft.com/store/detail/plagiarism-checker/9PM6Q4KGJM8P?hl=en-pk&amp;gl=PK"
+                   rel="noopener" aria-label="window" target="_blank" class="fbtn"><i class="fa fa-windows"
+                                                                                      aria-hidden="true"></i></a>
+                <a href="https://apps.apple.com/us/app/plagiarism-checker-prepostseo/id1463941368" rel="noopener"
+                   aria-label="apple" target="_blank" class="fbtn os-icon">
+                    <img src="https://www.prepostseo.com/imgs/app-store-ios-brands.svg" width="15" height="17"
+                         alt="google play store">
+                </a>
+            </div>
+            <div class="col-sm-3 noP" style="padding-right:20px; padding-bottom:80px">
+                <p class="fh">Resources</p>
+                <hr style=" margin:10px 0;">
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/advertise">Advertise</a>
+                <a href="/affiliate">Affiliate</a>
+                <a href="/faqs">FAQs</a>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/refund-policy">Refund Policy</a>
+                <a href="/terms-of-use">Terms of use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="public/js/index.js">
+</script>
+
+</body>
+
+</html>

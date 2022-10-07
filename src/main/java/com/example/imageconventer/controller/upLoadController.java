@@ -2,17 +2,22 @@ package com.example.imageconventer.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class upLoadController {
-    @RequestMapping("/upload")
-     public String upload(Model model){
-        return "converpage";
+
+    @ResponseBody
+    @PostMapping("/upload")
+    public String upload(MultipartFile multipartFile, Model model) {
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        return "Ok";
     }
 
-    @RequestMapping("/")
-    public String home(Model model){
-        return "redirect:upload";
+    @GetMapping("/upload")
+    public String home(Model model) {
+        return "converpage";
     }
 }
