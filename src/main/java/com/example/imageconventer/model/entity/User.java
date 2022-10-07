@@ -6,17 +6,19 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.id.UUIDGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
 @Table(name = "users")
-public class User {
+@IdClass(UserId.class)
+public class User implements Serializable {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;
-    @Column
+    @Id
     private String userName;
     @Column
     private String password;

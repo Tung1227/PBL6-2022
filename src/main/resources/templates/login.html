@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/login.css}">
+    <script>
+        function  checkInput(){
+            // checklengthpass
+
+        }
+    </script>
 </head>
 <body>
 <div class="wrapper fadeInDown">
@@ -22,9 +28,10 @@
         </div>
 
         <!-- Login Form -->
-        <form action="signup" method="post">
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <span class="error" th:utext="${errorMsg}"></span>
+        <form action="login" method="post">
+            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
