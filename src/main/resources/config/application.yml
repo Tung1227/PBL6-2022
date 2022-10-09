@@ -18,7 +18,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password: tungluong
+    password: 1
     driver-class-name: org.postgresql.Driver
     hikari:
       max-lifetime: 600000

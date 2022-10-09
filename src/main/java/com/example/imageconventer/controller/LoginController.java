@@ -17,6 +17,12 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    @GetMapping("/signup")
+    public String signUpPage() {
+        log.info("signup page");
+        return "signup";
+    }
+
     @GetMapping("/login")
     public String loginPage() {
         log.info("login page");

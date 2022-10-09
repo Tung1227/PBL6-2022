@@ -1,4 +1,4 @@
 package com.example.imageconventer.repository;
 
-public class loginRepository {
+public class LoginRepository {
 }
