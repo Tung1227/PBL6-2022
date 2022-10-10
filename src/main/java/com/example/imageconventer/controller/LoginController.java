@@ -17,12 +17,6 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/signup")
-    public String signUpPage() {
-        log.info("signup page");
-        return "signup";
-    }
-
     @GetMapping("/login")
     public String loginPage() {
         log.info("login page");
@@ -31,8 +25,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(String username, String password, Model model){
-
-        return "successpage";
+        User u = loginService.findUserByUserName(username);
+        if (!u.getPassword().equals(password)) {
+            model.addAttribute("errorMsg", "Sai tài khoản hoặc mật khẩu");
+            return "login";
+        }
+        return "redirect:upload";
     }
     @PostMapping("/signup")
     public String signup(){

@@ -11,10 +11,24 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/login.css}">
     <script>
-        function  checkInput(){
-            // checklengthpass
+        window.addEventListener('DOMContentLoaded',function (){
+            $('.error').each(function() {
+                if($(this).text() == ''){
+                    $(this).hide()
+                }
+            })
+        })
 
+        function  checkInput(){
+            console.log($('#password').val().length)
+            if($('#password').val().length < 8){
+                $('.error').show().text('Mật khẩu không đúng format')
+            }else {
+                $('.error').text('')
+                $('.error').hide()
+            }
         }
+
     </script>
 </head>
 <body>
