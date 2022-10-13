@@ -12,9 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "users")
-@IdClass(UserId.class)
-public class User implements Serializable {
-    @Id
+public class User {
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String id;

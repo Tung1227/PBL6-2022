@@ -265,3 +265,12 @@ footer {
 #improveTool {
     background: #277c55 !important
 }
+.file-upload-success{
+    border: 1px solid green;
+    width: 610px;
+    margin-left: 22px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    list-style-type: none;
+    margin-bottom: 5px;
+}

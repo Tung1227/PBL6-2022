@@ -1,8 +1,16 @@
 package com.example.imageconventer.controller;
 
+import com.example.imageconventer.model.dto.LoginUser;
+import com.example.imageconventer.model.entity.Image;
+import com.example.imageconventer.model.entity.User;
+import com.example.imageconventer.service.UploadFileService;
+import com.example.imageconventer.service.UploadFileServiceImpl;
+import com.example.imageconventer.service.UploadService;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -11,26 +19,46 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.*;
 
 @Controller
 public class UpLoadController {
 
-    private final String PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\image\\";
+
+    @Autowired()
+    UploadFileService uploadFileService;
+
+    @Autowired
+    UploadService uploadService;
+
+    @Autowired
+    LoginUser loginUser;
+
+
 
     @ResponseBody
-    @PostMapping("/upload")
-    public String upload(@RequestParam(value="file") MultipartFile file, Model model) throws IOException, JSONException {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        String filePath = PATH + StringUtils.cleanPath(file.getOriginalFilename());
-        file.transferTo(new File(filePath));
+    @PostMapping("upload")
+    public String upload(@RequestParam(value="files") MultipartFile file) throws JSONException {
+        String fileName = file.getOriginalFilename();
         JSONObject result = new JSONObject();
-        result.put("status", "OK");
-        result.put("name",fileName );
+        if(uploadFileService.upLoad(file).equals("OK")){
+            result.put("status", "OK");
+            result.put("name",fileName);
+            Image img = new Image();
+            img.setImageFile(fileName);
+            img.setStatus(false);
+            User u = new User();
+            u.setUserName(loginUser.getUsername());
+            img.setUser(u);
+            uploadService.save(img);
+        }else{
+            result.put("status", "FAIL");
+        }
          return result.toString();
     }
 
 
-    @GetMapping("/upload")
+    @GetMapping("upload")
      public String upload(Model model){
         return "converpage";
     }

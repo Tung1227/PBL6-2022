@@ -19,12 +19,9 @@ public class Image {
     @Column
     private String imageFile;
     @Column
-    private String status;
+    private boolean status;
 
     @ManyToOne
-    @JoinColumns({
-            @JoinColumn( name = "id",insertable = false,updatable = false),
-            @JoinColumn( name = "username",insertable = false,updatable = false)
-    })
+    @JoinColumn( name = "username",insertable = false,updatable = false)
     private User user;
 }

@@ -17,31 +17,40 @@
     <script>
         window.addEventListener('DOMContentLoaded', function (){
             $('#inputFile').on('change', function () {
-                let f = this.files[0];
-
-                let formData = new FormData()
-                formData.append('file', this.files[0])
-
-                $.ajax({
-                    method: 'post',
-                    data: formData,
-                    url: 'upload',
-                    processData: false,
-                    contentType: false,
-                    success: function (result){
-                        result = JSON.parse(result);
-                        if(result.status == 'OK'){
-                            let ul = document.getElementById('listFile')
-                            let li = document.createElement('li')
-                            li.appendChild(document.createTextNode(result.name))
-                            li.setAttribute('value',result.name)
-                            ul.appendChild(li)
+                let f = this.files;
+                for (const file of f) {
+                    let formData = new FormData()
+                    formData.append('files', file)
+                    $.ajax({
+                        method: 'post',
+                        data: formData,
+                        url: 'upload',
+                        processData: false,
+                        contentType: false,
+                        success: function (rs){
+                            rs = JSON.parse(rs);
+                            if(rs.status == 'OK'){
+                                let ul = document.getElementById('listFile')
+                                let li = document.createElement('li')
+                                let span = document.createElement('span')
+                                span.setAttribute('style', 'margin-top: 3px')
+                                span.setAttribute('class', 'fa fa-close')
+                                li.appendChild(document.createTextNode(rs.name))
+                                li.appendChild(span)
+                                li.setAttribute('value',rs.name)
+                                li.setAttribute('class', 'file-upload-success d-flex justify-content-between')
+                                ul.appendChild(li)
+                            }
+                        },
+                        error: function (){
+                            alert("cannot upload file")
                         }
-                    },
-                    error: function (){
-                        alert("cannot upload file")
-                    }
-                })
+                    })
+
+                }
+
+
+
             });
         })
     </script>
@@ -130,6 +139,13 @@
             </a>
         </div>
     </div>
+    <div class="row" id="fileArea" style="margin-top: 5px;">
+        <div>
+            <ul id="listFile">
+                <li class="file-upload-success d-flex justify-content-between">a <span class="fa fa-close" style="margin-top: 3px"></span></li>
+            </ul>
+        </div>
+    </div>
 
     <div class="row mt-2">
         <div class="col-md-6 mt-2 pl-0">
@@ -181,10 +197,6 @@
                 </div>
             </div>
         </div>
-        <div>file</div>
-        <ul id="listFile" class="toc_list">
-
-        </ul>
     </div>
     <div>
         <h2 id="image-to-text-converter"><strong>Image to Text Converter</strong></h2>
