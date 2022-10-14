@@ -21,7 +21,7 @@ public class Image {
     @Column
     private boolean status;
 
-    @ManyToOne
-    @JoinColumn( name = "username",insertable = false,updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn( name = "username",insertable = true,updatable = true)
     private User user;
 }

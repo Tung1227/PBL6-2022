@@ -14,7 +14,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/converpage.css}">
     <!--    JQuery-->
     <script th:src="@{/assets/js/JQuery.js}" ></script>
-    <script>
+    <script th:inline="javascript">
+        let listFile = /*[[${listFile}]]*/ '';
         window.addEventListener('DOMContentLoaded', function (){
             $('#inputFile').on('change', function () {
                 let f = this.files;
@@ -48,10 +49,22 @@
                     })
 
                 }
-
-
-
             });
+            if(listFile != ''){
+                listFile.forEach(function (file){
+                    let ul = document.getElementById('listFile')
+                    let li = document.createElement('li')
+                    let span = document.createElement('span')
+                    span.setAttribute('style', 'margin-top: 3px')
+                    span.setAttribute('class', 'fa fa-close')
+                    li.appendChild(document.createTextNode(file))
+                    li.appendChild(span)
+                    li.setAttribute('value',file)
+                    li.setAttribute('class', 'file-upload-success d-flex justify-content-between')
+                    ul.appendChild(li)
+                })
+            }
+
         })
     </script>
 </head>

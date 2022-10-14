@@ -24,47 +24,32 @@ import java.util.*;
 @Controller
 public class UpLoadController {
 
-
     @Autowired()
     UploadFileService uploadFileService;
 
-    @Autowired
-    UploadService uploadService;
-
-    @Autowired
-    LoginUser loginUser;
-
-
-
     @ResponseBody
     @PostMapping("upload")
-    public String upload(@RequestParam(value="files") MultipartFile file) throws JSONException {
-        String fileName = file.getOriginalFilename();
+    public String upload(@RequestParam(value = "files") MultipartFile file) throws JSONException {
+        String fileName = uploadFileService.upLoad(file);
         JSONObject result = new JSONObject();
-        if(uploadFileService.upLoad(file).equals("OK")){
+        if (!fileName.equals("")) {
             result.put("status", "OK");
-            result.put("name",fileName);
-            Image img = new Image();
-            img.setImageFile(fileName);
-            img.setStatus(false);
-            User u = new User();
-            u.setUserName(loginUser.getUsername());
-            img.setUser(u);
-            uploadService.save(img);
-        }else{
+            result.put("name", fileName);
+        } else {
             result.put("status", "FAIL");
         }
-         return result.toString();
+        return result.toString();
     }
 
 
     @GetMapping("upload")
-     public String upload(Model model){
+    public String upload(Model model) {
+        model.addAttribute("listFile", uploadFileService.getFiles());
         return "converpage";
     }
 
     @RequestMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         return "redirect:upload";
     }
 }
