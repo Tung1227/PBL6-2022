@@ -2,6 +2,10 @@ spring:
   thymeleaf:
     prefix: file:src/main/resources/templates/
     cache: false
+  web:
+    resources:
+      static-locations: file:src/main/resources/static/
+
 
   jpa:
     database: POSTGRESQL
@@ -18,7 +22,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password: tungluong
+    password: 1
     driver-class-name: org.postgresql.Driver
     hikari:
       max-lifetime: 600000

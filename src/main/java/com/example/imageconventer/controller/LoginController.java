@@ -32,12 +32,12 @@ public class LoginController {
         }
         return "redirect:upload";
     }
-    @PostMapping("/signup")
-    public String signup(){
-        User u = new User();
-          u.setUserName("tungl");
-          u.setPassword("123");
-          loginService.save(u);
-        return "successpage";
-    }
+//    @PostMapping("/signup")
+//    public String signup(){
+//        User u = new User();
+//          u.setUserName("tungl");
+//          u.setPassword("123");
+//          loginService.save(u);
+//        return "successpage";
+//    }
 }
