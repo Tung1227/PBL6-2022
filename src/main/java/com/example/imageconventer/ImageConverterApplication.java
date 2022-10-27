@@ -34,6 +34,7 @@ public class ImageConverterApplication extends WebSecurityConfigurerAdapter {
         //security.httpBasic().disable(); // Did work only for GET
 //        http.csrf().disable().authorizeRequests().antMatchers("/", "/js/**", "/css/**").permitAll().anyRequest().permitAll(); // Works for GET, POST, PUT, DELETE
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
+        http.csrf().disable().cors();
     }
 
 }
