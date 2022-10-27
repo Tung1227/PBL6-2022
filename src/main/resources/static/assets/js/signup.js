@@ -27,17 +27,14 @@ function checkNotEmpty() {
     if (userName === '' || password === '' || email === '') {
         $('#status').text(errMsg.statusErr)
         $('#message').text(errMsg.messageErr);
-
     } else {
-        if (password.length < 8) {
+        if (password.length <= 8) {
             $('#status').text(passwordMsg.statusPassword)
             $('#message').text(passwordMsg.messagePassword);
         } else if (validateEmail(email) === null) {
             $('#status').text(emailMsg.statusEmail)
             $('#message').text(emailMsg.messageEmail);
         } else {
-            $('#status').text(successMsg.statusSuccess)
-            $('#message').text(successMsg.messageSuccess);
             let sendSignUpObj = {userName, password, email};
             sendObjectSignUp(sendSignUpObj);
         }
@@ -48,12 +45,27 @@ function sendObjectSignUp(sendSignUpObj) {
     $.ajax({
         url: '/signup',
         type: 'POST',
+        cache: false,
         data: sendSignUpObj,
         success: function (data) {
-            // alert(data);
-            $('#username').val('');
-            $('#password').val('');
-            $('#email').val('');
+            let userName = data.userName;
+            let password = data.password;
+            let email = data.email;
+            let error = data.error;
+            if (error !== '') {
+                $('#status').text(errMsg.statusErr);
+                $('#message').text(error);
+                $('#username').text(userName);
+                $('#password').val(password);
+                $('#email').val(email);
+            } else {
+                $('#status').text(successMsg.statusSuccess)
+                $('#message').text(successMsg.messageSuccess);
+                $('#username').val('');
+                $('#password').val('');
+                $('#email').val('');
+            }
+
         },
         error: function () {
             alert('error');
