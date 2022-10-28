@@ -23,7 +23,7 @@ public class UploadFileServiceImpl implements UploadFileService{
     LoginUser loginUser;
     @Autowired
     UploadService uploadService;
-    private final String PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\image\\";
+    private final String PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\static\\image\\";
 
     public String upLoad(MultipartFile file){
         String fileName = file.getOriginalFilename();
