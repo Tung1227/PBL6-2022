@@ -5,6 +5,11 @@ spring:
   web:
     resources:
       static-locations: file:src/main/resources/static/
+  security:
+    user:
+      name: admin
+      password: password
+
 
 
   jpa:

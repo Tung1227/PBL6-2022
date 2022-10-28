@@ -1,14 +1,14 @@
 const statusErr = 'error';
-const messageErr = 'Data field is not empty';
+const messageErr = 'Data field is not empty !';
 
 const statusSuccess = 'success';
-const messageSuccess = 'You are created an account';
+const messageSuccess = 'You are created an account !';
 
 const statusEmail = 'error email';
-const messageEmail = 'Email is not valid';
+const messageEmail = 'Email is not valid !';
 
 const statusPassword = 'error password';
-const messagePassword = 'Password is must be long 8';
+const messagePassword = 'Password is must be long 8 !';
 
 
 const errMsg = {statusErr, messageErr};
