@@ -12,14 +12,22 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/converpage.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/login.css}">
     <!--    JQuery-->
     <script th:src="@{/assets/js/JQuery.js}" ></script>
     <script th:inline="javascript">
         let listFile = /*[[${listFile}]]*/ '';
         window.addEventListener('DOMContentLoaded', function (){
             $('#inputFile').on('change', function () {
+                $('#error').hide()
                 let f = this.files;
                 for (const file of f) {
+                    let ext = file.name.split('.')
+                    if(!(file.name.endsWith('png') || file.name.endsWith('jpg') || file.name.endsWith('img'))){
+                        $('#error').text("Please,Input file with extension jpg, png, img!!!")
+                        $('#error').show()
+                        break;
+                    }
                     let formData = new FormData()
                     formData.append('files', file)
                     $.ajax({
@@ -36,6 +44,7 @@
                                 let span = document.createElement('span')
                                 span.setAttribute('style', 'margin-top: 3px')
                                 span.setAttribute('class', 'fa fa-close')
+                                span.setAttribute('onclick', 'deleteFile(this)')
                                 li.appendChild(document.createTextNode(rs.name))
                                 li.appendChild(span)
                                 li.setAttribute('value',rs.name)
@@ -57,6 +66,7 @@
                     let span = document.createElement('span')
                     span.setAttribute('style', 'margin-top: 3px')
                     span.setAttribute('class', 'fa fa-close')
+                    span.setAttribute('onclick', 'deleteFile(this)')
                     li.appendChild(document.createTextNode(file))
                     li.appendChild(span)
                     li.setAttribute('value',file)
@@ -66,6 +76,41 @@
             }
 
         })
+        function  deleteFile(e){
+
+            let fileName = e.parentElement.getAttribute('value')
+            $.ajax({
+                method: 'POST',
+                url: 'upload/delete',
+                data:{
+                    fileName,
+                },
+                success: function (result){
+                    rs = JSON.parse(result)
+                    if(rs.status == "OK"){
+                        e.parentNode.remove()
+                    }else{
+                        alert("Can not delete file!!!")
+                    }
+                }
+            })
+        }
+
+        function submitHandle(){
+             let listFileName = [];
+            $('#listFile').children().each(function (){
+                listFileName.push($(this).text())
+            })
+            let form = document.createElement('form')
+            let input = document.createElement('input')
+            input.setAttribute('value', listFileName.toString())
+            input.setAttribute('name', 'listFile')
+            form.append(input)
+            form.setAttribute('action', '../convert')
+            form.setAttribute('method', 'POST')
+            document.body.append(form)
+            form.submit()
+        }
     </script>
 </head>
 
@@ -145,17 +190,17 @@
     </div>
 
     <div class="row mt-4 text-center">
-        <div id="error-redo-btn" class="w-100 m-b-20">
+        <div id="error-redo-btn" class="w-100 m-b-20" onclick="submitHandle()">
             <a class="btn btn-lg no-margin btn-success text-white" href="#">
                 <i class="fa fa-redo"></i>
-                <strong class="text-uppercase">Submit</strong>
+                <strong class="text-uppercase" >Submit</strong>
             </a>
         </div>
     </div>
     <div class="row" id="fileArea" style="margin-top: 5px;">
+        <span class="error" id="error"></span>
         <div>
             <ul id="listFile">
-                <li class="file-upload-success d-flex justify-content-between">a <span class="fa fa-close" style="margin-top: 3px"></span></li>
             </ul>
         </div>
     </div>

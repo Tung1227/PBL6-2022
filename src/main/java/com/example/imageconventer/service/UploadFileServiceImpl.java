@@ -27,10 +27,19 @@ public class UploadFileServiceImpl implements UploadFileService{
 
     public String upLoad(MultipartFile file){
         String fileName = file.getOriginalFilename();
+        Image oldImg = uploadService.findByUserNameAndFileName(loginUser.getUsername(), fileName);
         Path filePath = Paths.get(PATH,loginUser.getUsername() + "_" +file.getOriginalFilename());
         try(OutputStream os = Files.newOutputStream(filePath)){
             os.write(file.getBytes());
         } catch (IOException e) {
+            return "";
+        }
+        if(oldImg != null && oldImg.isDeleted()){
+            oldImg.setDeleted(false);
+            uploadService.save(oldImg);
+            return fileName;
+        }
+        else if(oldImg != null && !oldImg.isDeleted()){
             return "";
         }
         Image img = new Image();
@@ -47,9 +56,25 @@ public class UploadFileServiceImpl implements UploadFileService{
         if(loginUser !=null){
             List<Image> imgs = uploadService.findByUserName(loginUser.getUsername());
             for(Image i : imgs){
+                if(i.isDeleted()){
+                    continue;
+                }
                 fileNames.add(i.getImageFile());
             }
         }
         return fileNames;
     }
+
+    @Override
+    public Boolean deleteFile(String fileName) {
+        Image img = uploadService.findByUserNameAndFileName(loginUser.getUsername(), fileName);
+        if(img != null){
+            img.setDeleted(true);
+            uploadService.save(img);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -36,7 +37,7 @@ public class UpLoadController {
             result.put("status", "OK");
             result.put("name", fileName);
         } else {
-            result.put("status", "FAIL");
+              result.put("status", "FAIL");
         }
         return result.toString();
     }
@@ -51,5 +52,15 @@ public class UpLoadController {
     @RequestMapping("/")
     public String home(Model model) {
         return "redirect:upload";
+    }
+
+    @PostMapping("/upload/delete")
+    @ResponseBody
+    public String deleteFile(String fileName) throws JSONException {
+        JSONObject a = new JSONObject();
+        if(uploadFileService.deleteFile(fileName)){
+            a.put("status", "OK");
+        }
+        return a.toString();
     }
 }

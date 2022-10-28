@@ -10,4 +10,6 @@ public interface UploadFileService {
     String upLoad(MultipartFile file);
 
     List<String> getFiles();
+
+    Boolean deleteFile(String fileName);
 }

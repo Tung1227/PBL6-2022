@@ -19,8 +19,9 @@ public class Image {
     @Column
     private String imageFile;
     @Column
-    private boolean status;
-
+    private boolean status = false;
+    @Column
+    private boolean deleted = false;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn( name = "username",insertable = true,updatable = true)
     private User user;

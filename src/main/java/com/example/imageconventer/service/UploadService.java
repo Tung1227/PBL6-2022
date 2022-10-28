@@ -11,4 +11,7 @@ import java.util.List;
 public interface UploadService extends JpaRepository<Image, String> {
     @Query("Select i from Image i where i.user.userName = ?1")
     List<Image> findByUserName(String username);
+
+    @Query("select i from Image i where i.user.userName = ?1 and i.imageFile = ?2")
+    Image findByUserNameAndFileName(String username, String filename);
 }
