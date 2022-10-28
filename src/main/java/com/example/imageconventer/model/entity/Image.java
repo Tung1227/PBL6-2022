@@ -19,12 +19,10 @@ public class Image {
     @Column
     private String imageFile;
     @Column
-    private String status;
-
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn( name = "id",insertable = false,updatable = false),
-            @JoinColumn( name = "username",insertable = false,updatable = false)
-    })
+    private boolean status = false;
+    @Column
+    private boolean deleted = false;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn( name = "username",insertable = true,updatable = true)
     private User user;
 }

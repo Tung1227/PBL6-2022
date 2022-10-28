@@ -1,5 +1,6 @@
 package com.example.imageconventer.controller;
 
+import com.example.imageconventer.model.dto.LoginUser;
 import com.example.imageconventer.model.entity.User;
 import com.example.imageconventer.service.LoginService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,9 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    @Autowired
+    LoginUser loginUser;
+
     @GetMapping("/login")
     public String loginPage() {
         log.info("login page");
@@ -26,10 +30,11 @@ public class LoginController {
     @PostMapping("/login")
     public String login(String username, String password, Model model){
         User u = loginService.findUserByUserName(username);
-        if (!u.getPassword().equals(password)) {
+        if (u == null || !u.getPassword().equals(password)) {
             model.addAttribute("errorMsg", "Sai tài khoản hoặc mật khẩu");
             return "login";
         }
+        loginUser.setUsername(username);
         return "redirect:upload";
     }
     @PostMapping("/signup")
