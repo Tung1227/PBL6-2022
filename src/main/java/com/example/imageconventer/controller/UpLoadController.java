@@ -50,7 +50,7 @@ public class UpLoadController {
     }
 
     @RequestMapping("/")
-    public String home(Model model){
+    public String home(Model model) {
         return "redirect:upload";
     }
 

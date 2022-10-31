@@ -20,10 +20,18 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("convert")
 public class SuccessController {
 
-    @GetMapping("/success")
-    public String success(Model model) {
+    @Autowired
+    LoginUser loginUser;
+
+    @Autowired
+    ConvertService convertService;
+
+    @PostMapping("")
+    public String success(String listFile, Model model) throws IOException {
+        convertService.Convert(listFile);
         return "successpage";
     }
 }
