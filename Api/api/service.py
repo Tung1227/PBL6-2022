@@ -1,7 +1,7 @@
 import easyocr 
 
-IMAGE_PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\image\\"
-TEXT_PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\text\\"
+IMAGE_PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\static\\image\\"
+TEXT_PATH = "C:\\Tung\\nam4\\pbl6\\repo\\python\\static\\text\\"
 reader = easyocr.Reader(['vi'],gpu=False)
 
 def convert_image(file):
