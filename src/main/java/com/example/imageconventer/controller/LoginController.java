@@ -2,10 +2,12 @@ package com.example.imageconventer.controller;
 
 import com.example.imageconventer.model.dto.LoginUser;
 import com.example.imageconventer.model.entity.User;
+import com.example.imageconventer.service.EncodeService;
 import com.example.imageconventer.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,9 @@ public class LoginController {
     @Autowired
     LoginUser loginUser;
 
+    @Autowired
+    EncodeService encodeService;
+
     @GetMapping("/login")
     public String loginPage() {
         log.info("login page");
@@ -30,7 +35,8 @@ public class LoginController {
     @PostMapping("/login")
     public String login(String username, String password, Model model){
         User u = loginService.findUserByUserName(username);
-        if (u == null || !u.getPassword().equals(password)) {
+        String encodedPassword = encodeService.encode(password);
+        if (u == null || !encodeService.match(password,u.getPassword())) {
             model.addAttribute("errorMsg", "Sai tài khoản hoặc mật khẩu");
             return "login";
         }

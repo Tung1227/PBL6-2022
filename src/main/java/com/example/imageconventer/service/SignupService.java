@@ -6,6 +6,7 @@ import com.example.imageconventer.model.entity.User;
 import com.example.imageconventer.repository.SignupRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class SignupService {
     private static final String EMPTY = "";
 
     private boolean checkInsertFlag = true;
+
+    @Autowired
+    EncodeService encodeService;
 
 
     public UserDto registrationUser(UserDto user) {
@@ -38,8 +42,7 @@ public class SignupService {
             }
         });
         userData.setId(String.valueOf(UUID.randomUUID()));
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        String encodedPassword = encodeService.encode(user.getPassword());
         userData.setPassword(encodedPassword);
         userData.setUserName(user.getUserName());
         userData.setEmail(user.getEmail());

@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,13 +13,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/converpage.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/successpage.css}">
+    <!--    JQuery-->
+    <script th:src="@{/assets/js/JQuery.js}" ></script>
+    <script src="" th:inline="javascript">
+        var list = /*[[${successList}]]*/ '';
+        window.addEventListener('DOMContentLoaded',() => {
+            console.log(list)
+            // $('#listFile').children.on('click', function (){
+            //     getContent();
+            // })
+        })
+
+        function getContent(){
+            let fileName = $(this).val()
+            $.ajax({
+                method: 'POST',
+                data: {fileName},
+                url: 'content',
+                success: function (result){
+                    $('textarea').text(result)
+                },
+                error: function (){
+                  console.log('error')
+                }
+            })
+        }
+    </script>
 </head>
 
 <body>
 <!-- menu  -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img class="rounded" src="assets/img/logo.png" width="50" height="50" alt="">
+        <img class="rounded" th:src="@{assets/img/logo.png}" width="50" height="50" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,54 +93,14 @@
             <div class="h-100 result-container">
                 <div class="h-100 result-content flex-grow-1">
                     <div class="h-100 mt-4 alert alert-danger hidden" id="warningConversionError">
-                        <textarea class="h-50 w-100 rounded file-drop-area" name="" id=""></textarea>
+                        <textarea title="ContentArea" placeholder="Edit here..." class="h-50 w-100 rounded file-drop-area" name="" id="" th:utext="${fileContent}"></textarea>
                         <div class="panel panel-primary" id="result_panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title text-center">Result List</h3>
                             </div>
                             <div class="panel-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
-                                    </li>
-                                    <li class="list-group-item"><strong>Signature
-                                        Accommodations</strong>(1480m)
+                                <ul class="list-group" id="listFile">
+                                    <li class="list-group-item" onclick="getContent()" th:each="file : ${successList}" th:value="${file}" th:utext="${file}">
                                     </li>
                                 </ul>
                             </div>
@@ -201,9 +187,6 @@
 </footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

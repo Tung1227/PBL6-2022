@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.stream.FileImageInputStream;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -31,7 +33,17 @@ public class SuccessController {
 
     @PostMapping("")
     public String success(String listFile, Model model) throws IOException {
-        convertService.Convert(listFile);
+        List<String> successList = convertService.Convert(listFile);
+        model.addAttribute("successList", successList);
+        if(!successList.isEmpty()){
+            model.addAttribute("fileContent",convertService.readFile(successList.get(0)));
+        }
         return "successpage";
+    }
+
+    @ResponseBody
+    @PostMapping("/content")
+    public String download(String fileName, Model model) throws IOException {
+        return convertService.readFile(fileName);
     }
 }
