@@ -16,13 +16,29 @@
     <!--    JQuery-->
     <script th:src="@{/assets/js/JQuery.js}" ></script>
     <script th:inline="javascript">
-        var list = /*[[${successList}]]*/ '';
+        var listFile = /*[[${successList}]]*/ '';
         window.addEventListener('DOMContentLoaded',() => {
+            if(listFile != ''){
+                listFile.forEach(function (file){
+                    let ul = document.getElementById('listFile')
+                    let li = document.createElement('li')
+                    let span = document.createElement('span')
+                    span.setAttribute('style', 'margin-top: 3px')
+                    span.setAttribute('class', 'fa fa-download')
+                    span.setAttribute('onclick', 'downloadFile(this)')
+                    li.appendChild(document.createTextNode(file))
+                    li.appendChild(span)
+                    li.setAttribute('value',file)
+                    li.setAttribute('class', 'file-upload-success d-flex justify-content-between')
+                    li.setAttribute('onclick', 'getContent(this)')
+                    ul.appendChild(li)
+                })
+            }
 
         });
 
-        function getContent(obj){
-            let fileName = $(obj).text()
+        function getContent(e){
+            let fileName = e.getAttribute('value')
             $.ajax({
                 method: 'POST',
                 data: {fileName},
@@ -32,6 +48,30 @@
                 },
                 error: function (){
                   console.log('error')
+                }
+            })
+        }
+
+        function downloadFile(e){
+            let fileName = e.parentElement.getAttribute('value')
+            let downlaodName = fileName.substring(0,fileName.indexOf(".")) + '.txt'
+
+            $.ajax({
+                method: 'POST',
+                data: {fileName},
+                url: 'convert/download',
+                success: function (result){
+                    console.log(result)
+                    var element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(result));
+                    element.setAttribute('download', downlaodName);
+                    element.style.display = 'none';
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                },
+                error: function (){
+                    console.log('error')
                 }
             })
         }
@@ -97,8 +137,6 @@
                             </div>
                             <div class="panel-body">
                                 <ul class="list-group" id="listFile">
-                                    <li class="list-group-item" th:onclick="|getContent(this)|" th:each="file : ${successList}" th:value="${file}" th:utext="${file} + '<span class = &quotfa-regular fa-download&quot;></span>'">
-                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -1,10 +1,16 @@
 package com.example.imageconventer.controller;
 
+import com.example.imageconventer.Bean.DownloadBean;
 import com.example.imageconventer.model.dto.LoginUser;
 import com.example.imageconventer.service.ConvertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +49,13 @@ public class SuccessController {
 
     @ResponseBody
     @PostMapping("/content")
-    public String download(String fileName, Model model) throws IOException {
+    public String content(String fileName, Model model) throws IOException {
         return convertService.readFile(fileName);
+    }
+
+    @ResponseBody
+    @PostMapping("/download")
+    public ResponseEntity<Resource> download(String fileName, Model model) throws IOException {
+        return convertService.DownloadFile(fileName);
     }
 }

@@ -2,12 +2,21 @@ package com.example.imageconventer.service;
 
 import com.example.imageconventer.model.dto.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.repository.Repository;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,8 +74,31 @@ public class ConvertServiceImpl implements ConvertService{
     }
 
     @Override
-    public List<String> DownloadFile(String listFile) {
-        return null;
+    public ResponseEntity<Resource> DownloadFile(String s) {
+        String fileTextName = "";
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+        StringBuilder content = new StringBuilder();
+        String line = "";
+        BufferedReader in = null;
+        fileTextName = s.substring(0, s.lastIndexOf('.')) + ".txt";
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileTextName);
+        File f = new File(PATH + loginUser.getUsername() + "_" + fileTextName);
+        Path path = Paths.get(f.getAbsolutePath()) ;
+        ByteArrayResource resource = null;
+        try {
+            resource = new ByteArrayResource(Files.readAllBytes(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(f.length())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
     }
 
     @Override
