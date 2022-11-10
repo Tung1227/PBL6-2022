@@ -15,21 +15,18 @@
     <link rel="stylesheet" type="text/css" th:href="@{/assets/css/successpage.css}">
     <!--    JQuery-->
     <script th:src="@{/assets/js/JQuery.js}" ></script>
-    <script src="" th:inline="javascript">
+    <script th:inline="javascript">
         var list = /*[[${successList}]]*/ '';
         window.addEventListener('DOMContentLoaded',() => {
-            console.log(list)
-            // $('#listFile').children.on('click', function (){
-            //     getContent();
-            // })
-        })
 
-        function getContent(){
-            let fileName = $(this).val()
+        });
+
+        function getContent(obj){
+            let fileName = $(obj).text()
             $.ajax({
                 method: 'POST',
                 data: {fileName},
-                url: 'content',
+                url: 'convert/content',
                 success: function (result){
                     $('textarea').text(result)
                 },
@@ -100,7 +97,7 @@
                             </div>
                             <div class="panel-body">
                                 <ul class="list-group" id="listFile">
-                                    <li class="list-group-item" onclick="getContent()" th:each="file : ${successList}" th:value="${file}" th:utext="${file}">
+                                    <li class="list-group-item" th:onclick="|getContent(this)|" th:each="file : ${successList}" th:value="${file}" th:utext="${file} + '<span class = &quotfa-regular fa-download&quot;></span>'">
                                     </li>
                                 </ul>
                             </div>
