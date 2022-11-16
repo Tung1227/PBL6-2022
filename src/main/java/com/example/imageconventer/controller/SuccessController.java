@@ -1,6 +1,5 @@
 package com.example.imageconventer.controller;
 
-import com.example.imageconventer.Bean.DownloadBean;
 import com.example.imageconventer.model.dto.LoginUser;
 import com.example.imageconventer.service.ConvertService;
 import org.springframework.beans.factory.annotation.Autowired;

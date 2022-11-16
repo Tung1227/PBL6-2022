@@ -44,7 +44,6 @@ public class UploadFileServiceImpl implements UploadFileService{
         }
         Image img = new Image();
         img.setImageFile(fileName);
-        img.setStatus(false);
         User u = loginService.findUserByUserName(loginUser.getUsername());
         img.setUser(u);
         uploadService.save(img);
@@ -56,7 +55,7 @@ public class UploadFileServiceImpl implements UploadFileService{
         if(loginUser !=null){
             List<Image> imgs = uploadService.findByUserName(loginUser.getUsername());
             for(Image i : imgs){
-                if(i.isDeleted()){
+                if(i.isDeleted() || i.isStatus()){
                     continue;
                 }
                 fileNames.add(i.getImageFile());

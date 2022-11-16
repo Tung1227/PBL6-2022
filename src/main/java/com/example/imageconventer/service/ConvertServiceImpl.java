@@ -1,6 +1,7 @@
 package com.example.imageconventer.service;
 
 import com.example.imageconventer.model.dto.LoginUser;
+import com.example.imageconventer.model.entity.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -29,6 +30,9 @@ public class ConvertServiceImpl implements ConvertService{
     private final String PATH = "C:\\Tung\\nam4\\pbl6\\python\\static\\text\\";
     @Autowired
     LoginUser loginUser;
+    @Autowired
+    UploadService uploadService;
+
     @Override
     public List<String> Convert(String listFile) throws IOException {
         List<String> fileArr = Arrays.asList(listFile.split(","));
@@ -65,6 +69,9 @@ public class ConvertServiceImpl implements ConvertService{
 
                 // print result
                 System.out.println(response.toString());
+                Image i = uploadService.findByUserNameAndFileName(loginUser.getUsername(), fileName);
+                i.setStatus(true);
+                uploadService.save(i);
                 successList.add(fileName);
             } else {
                 System.out.println("POST request not worked");
