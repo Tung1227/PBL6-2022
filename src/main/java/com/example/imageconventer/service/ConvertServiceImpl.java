@@ -1,13 +1,23 @@
 package com.example.imageconventer.service;
 
 import com.example.imageconventer.model.dto.LoginUser;
+import com.example.imageconventer.model.entity.Image;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.repository.Repository;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +30,9 @@ public class ConvertServiceImpl implements ConvertService{
     private final String PATH = "C:\\Tung\\nam4\\pbl6\\python\\static\\text\\";
     @Autowired
     LoginUser loginUser;
+    @Autowired
+    UploadService uploadService;
+
     @Override
     public List<String> Convert(String listFile) throws IOException {
         List<String> fileArr = Arrays.asList(listFile.split(","));
@@ -56,6 +69,9 @@ public class ConvertServiceImpl implements ConvertService{
 
                 // print result
                 System.out.println(response.toString());
+                Image i = uploadService.findByUserNameAndFileName(loginUser.getUsername(), fileName);
+                i.setStatus(true);
+                uploadService.save(i);
                 successList.add(fileName);
             } else {
                 System.out.println("POST request not worked");
@@ -65,8 +81,31 @@ public class ConvertServiceImpl implements ConvertService{
     }
 
     @Override
-    public List<String> DownloadFile(String listFile) {
-        return null;
+    public ResponseEntity<Resource> DownloadFile(String s) {
+        String fileTextName = "";
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+        StringBuilder content = new StringBuilder();
+        String line = "";
+        BufferedReader in = null;
+        fileTextName = s.substring(0, s.lastIndexOf('.')) + ".txt";
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileTextName);
+        File f = new File(PATH + loginUser.getUsername() + "_" + fileTextName);
+        Path path = Paths.get(f.getAbsolutePath()) ;
+        ByteArrayResource resource = null;
+        try {
+            resource = new ByteArrayResource(Files.readAllBytes(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(f.length())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
     }
 
     @Override

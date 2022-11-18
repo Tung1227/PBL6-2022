@@ -14,8 +14,7 @@ iframe {
 .list-group {
     max-height: 300px;
     margin-bottom: 10px;
-    overflow-y: scroll;
-
+    /* overflow-y: scroll; */
 }
 
 .alert-danger{

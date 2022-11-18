@@ -3,6 +3,7 @@ package com.example.imageconventer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,16 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-public class ImageConverterApplication extends WebSecurityConfigurerAdapter {
+public class ImageConverterApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(ImageConverterApplication.class, args);
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
-        http.csrf().disable().cors();
-    }
 
 }
