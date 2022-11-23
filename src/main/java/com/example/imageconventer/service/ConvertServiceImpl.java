@@ -26,7 +26,7 @@ import java.util.List;
 public class ConvertServiceImpl implements ConvertService{
 
     private String POST_URL = "http://localhost:8081/api/convert";
-
+//    private final String PATH = "\\home\\pbl6\\upload\\text\\";
     private final String PATH = "C:\\Tung\\nam4\\pbl6\\python\\static\\text\\";
     @Autowired
     LoginUser loginUser;
